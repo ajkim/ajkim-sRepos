@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/handlebars.js"></script>
+    <script src="lib/ember.js"></script>
+    <script src="lib/ember-data.js"></script>
+    <script src="lib/ember-handlebars.js"></script>
+    <script src="main.js"></script>
+
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+  <script type="text/x-handlebars" data-template-name="application">
+    <div class="navbar">
+      <ul class="nav navbar-nav">
+        {{#link-to 'index' tagName='li'}}Home{{/link-to}}
+        {{#link-to 'about' tagName='li'}}About{{/link-to}}
+        {{#link-to 'names' tagName='li'}}Names{{/link-to}}
+      </ul>
+    </div>
+    <div class="container">{{outlet}}</div>
+    <footer class="container"></footer>
+  </script>
+
+   <script type="text/x-handlebars" data-template-name="index">
+       <h1>Ann Kim's GitHub Activity!</h1>
+       <p>There are {{repositories}} products</p>
+       <p>Rendered on {{time}}</p>
+   </script>
+
+  <script type="text/x-handlebars" data-template-name="about">
+      <h1>About Ann and her work</h1>
+      <h2>Created by {{name}}, bitchh</h2>
+      <img {{bind-attr src='photo'}} alt='Photo' />
+  </script>
+
+<script type="text/x-handlebars" data-template-name="names">
+    <h2>A List of Cool things and things</h2>
+    <ul>
+        {{#each name in controller}}
+        <li>{{name}}</li>
+        {{/each}}
+    </ul>
+    <div>{{outlet}}</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="name">
+    <div>
+    <p>Committed this many times: {{commits}}</p>
+        <li>{{#link-to this}} {{name}} {{/link-to}}</li>
+        <h4>Go see code here: {{git_url}}</h4>
+    </div>
+</script>
+
+
+</body>
+</html>
