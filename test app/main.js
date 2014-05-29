@@ -44,8 +44,8 @@ App.ReposController = Ember.ArrayController.extend({
 
 App.Router.map(function() {
   this.route('about');
-  this.resource('names', function() {
-    this.resource('name', { path: '/:name_id' });
+  this.resource('repos', function() {
+    this.resource('repo', { path: '/:repo_id' });
   });
 });
 
@@ -56,20 +56,20 @@ App.AboutController = Ember.Controller.extend({
 
 App.ReposRoute = Ember.Route.extend({
   model: function() {
-    return App.Name.all();
+    return App.Repo.all();
   }
 });
 
-App.NameRoute = Ember.Route.extend({
+App.RepoRoute = Ember.Route.extend({
   model: function(params) {
-    return this.store.find('name', params.repo_id);
+    return this.store.find('repo', params.repo_id);
   }
 });
 
-Name.reopenClass({
+Repo.reopenClass({
   transient: true,
   url: '/https://api.github.com/users/ajkim/repos',
   adapter: Ember.RESTAdapter.create()
 });
 
-module.exports = Name;
+module.exports = Repo;
