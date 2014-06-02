@@ -1,0 +1,12 @@
+
+
+body {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+
+span {
+	display: block;
+	padding: 5px;
+}
